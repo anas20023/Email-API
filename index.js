@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true, // upgrade later with ST
   auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD,
+    user: user,
+    pass: pw,
   },
 });
 //-------------------------------
@@ -68,7 +68,7 @@ app.post("/getmail", async (req, res) => {
           <p style="color: #555555;">Ramadan Mubarak!</p>
           <p style="color: #555555;">Warm regards,</p>
           <p style="color: #555555;">[Your Name]</p>
-      </div>`
+      </div>`,
         });
 
         console.log("Message sent: %s", info.messageId);
