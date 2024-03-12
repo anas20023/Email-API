@@ -67,7 +67,7 @@ app.post("/getmail", async (req, res) => {
           <p style="color: #555555;">Wishing you and your family a blessed Ramadan filled with joy, harmony, and countless blessings.</p>
           <p style="color: #555555;">Ramadan Mubarak!</p>
           <p style="color: #555555;">Warm regards,</p>
-          <p style="color: #555555;">[Your Name]</p>
+          <p style="color: #555555;">[Anas Ibn Belal]</p>
       </div>`,
         });
 
