@@ -4,15 +4,15 @@ const nodemailer = require("nodemailer");
 var bodyParser = require("body-parser");
 require("dotenv").config();
 //-------------------------------
-const user = process.env.EMAIL;
-const pw = process.env.PASSWORD;
+var user = process.env.EMAIL;
+var pw = process.env.PASSWORD;
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // upgrade later with ST
   auth: {
-    user: "anasibnebelal45@gmail.com",
-    pass: "ovuyipfkipvgetpb",
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   },
 });
 //-------------------------------
@@ -56,14 +56,22 @@ app.post("/getmail", async (req, res) => {
       async function main() {
         // send mail with defined transport object
         const info = await transporter.sendMail({
-          from: "anasibnebelal45@gmail.com",
+          from: "Anas Ibn Belal",
           to: Email,
-          subject: "Welcome",
-          text: "Hello world?",
+          subject: "Welcome to my Email API",
+          html: ` <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h1 style="color: #333333;">Ramadan Mubarak!</h1>
+          <p style="color: #555555;">As the month of Ramadan begins, I extend my warmest wishes to you and your loved ones.</p>
+          <p style="color: #555555;">May this holy month be filled with peace, reflection, and spiritual growth. Let us cherish the blessings of Ramadan and strive to strengthen our faith, compassion, and community ties.</p>
+          <p style="color: #555555;">In the spirit of generosity and kindness that defines Ramadan, let us also remember those less fortunate and extend a helping hand wherever we can.</p>
+          <p style="color: #555555;">Wishing you and your family a blessed Ramadan filled with joy, harmony, and countless blessings.</p>
+          <p style="color: #555555;">Ramadan Mubarak!</p>
+          <p style="color: #555555;">Warm regards,</p>
+          <p style="color: #555555;">[Your Name]</p>
+      </div>`
         });
 
         console.log("Message sent: %s", info.messageId);
-        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
       }
       main().catch(console.error);
       //---------------------------
