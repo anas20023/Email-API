@@ -4,6 +4,8 @@ const nodemailer = require("nodemailer");
 var bodyParser = require("body-parser");
 require("dotenv").config();
 //-------------------------------
+const user = process.env.EMAIL;
+const pw = process.env.PASSWORD;
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -11,7 +13,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: "anasibnebelal45@gmail.com",
     pass: "ovuyipfkipvgetpb",
-  }, 
+  },
 });
 //-------------------------------
 const app = express();
@@ -22,7 +24,7 @@ app.use(
     extended: true,
   })
 );
-const port = 3000;
+const port = process.env.PORT || 3000;
 mongoose
   .connect("mongodb://localhost:27017/mydb", {
     useNewUrlParser: true,
