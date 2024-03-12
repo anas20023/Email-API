@@ -1,17 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
 var bodyParser = require("body-parser");
 require("dotenv").config();
 //-------------------------------
-let Email_API = process.env.API_KEY;
-const { MailerSend, Recipient, EmailParams } = require("mailersend");
-const mailersend = new MailerSend({
-  api_key: Email_API,
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // upgrade later with ST
+  auth: {
+    user: "anasibnebelal45@gmail.com",
+    pass: "ovuyipfkipvgetpb",
+  }, 
 });
-const recipients = [
-  new Recipient("anasibnebelal400@mail.com", "Anas Ibn Belal"),
-];
-//console.log(Email_API);
 //-------------------------------
 const app = express();
 app.use(bodyParser.json());
@@ -44,22 +45,26 @@ app.post("/getmail", async (req, res) => {
       Email: Email,
       messege: messege,
     };
-    const recipients = [new Recipient(Email, Fname)];
-    const emailParams = new EmailParams()
-      .setFrom("info@trial-3vz9dle5px7lkj50.mlsender.net")
-      .setTo(recipients)
-      .setReplyTo(sentFrom)
-      .setSubject("This is a Subject")
-      .setHtml("<strong>This is the HTML content</strong>")
-      .setText("This is the text content");
-
-    await mailersend.email.send(emailParams);
-
     await db.collection("infos").insertOne(data, function (err, result) {
       if (err) {
         console.error("Error inserting user:", err);
         return res.status(500).send("An error occurred.");
       }
+      //---------------------------
+      async function main() {
+        // send mail with defined transport object
+        const info = await transporter.sendMail({
+          from: "anasibnebelal45@gmail.com",
+          to: Email,
+          subject: "Welcome",
+          text: "Hello world?",
+        });
+
+        console.log("Message sent: %s", info.messageId);
+        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+      }
+      main().catch(console.error);
+      //---------------------------
       return res.redirect("done.html");
     });
   } catch (error) {
