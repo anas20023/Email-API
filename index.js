@@ -26,7 +26,7 @@ app.use(
 );
 const port = process.env.PORT || 3000;
 mongoose
-  .connect("mongodb://localhost:27017/mydb", {
+  .connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -47,7 +47,7 @@ app.post("/getmail", async (req, res) => {
       Email: Email,
       messege: messege,
     };
-    await db.collection("infos").insertOne(data, function (err, result) {
+    await db.collection("senders").insertOne(data, function (err, result) {
       if (err) {
         console.error("Error inserting user:", err);
         return res.status(500).send("An error occurred.");
@@ -67,7 +67,7 @@ app.post("/getmail", async (req, res) => {
           <p style="color: #555555;">Wishing you and your family a blessed Ramadan filled with joy, harmony, and countless blessings.</p>
           <p style="color: #555555;">Ramadan Mubarak!</p>
           <p style="color: #555555;">Warm regards,</p>
-          <p style="color: #555555;">[Anas Ibn Belal]</p>
+          <p style="color: #555555;">Anas Ibn Belal</p>
       </div>`,
         });
 
