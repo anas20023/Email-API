@@ -9,7 +9,7 @@ var pw = process.env.PASSWORD;
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
-  secure: true, 
+  secure: true,
   auth: {
     user: user,
     pass: pw,
@@ -54,10 +54,9 @@ app.post("/getmail", async (req, res) => {
       }
       //---------------------------
       async function main() {
-        // send mail with defined transport object
         const info = await transporter.sendMail({
-          from: user,
-          to: Email ,
+          from: "Anas Ibn Belal <${Email}>", 
+          to: Email,
           subject: "Ramadan Mubarak and Eid Mubarak!",
           html: ` <!DOCTYPE html>
           <html lang="en">
