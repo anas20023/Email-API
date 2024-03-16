@@ -9,7 +9,7 @@ var pw = process.env.PASSWORD;
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
-  secure: true, // upgrade later with ST
+  secure: true, 
   auth: {
     user: user,
     pass: pw,
@@ -56,19 +56,63 @@ app.post("/getmail", async (req, res) => {
       async function main() {
         // send mail with defined transport object
         const info = await transporter.sendMail({
-          from: "Anas Ibn Belal",
-          to: Email,
-          subject: "Welcome to my Email API",
-          html: ` <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #333333;">Ramadan Mubarak!</h1>
-          <p style="color: #555555;">As the month of Ramadan begins, I extend my warmest wishes to you and your loved ones.</p>
-          <p style="color: #555555;">May this holy month be filled with peace, reflection, and spiritual growth. Let us cherish the blessings of Ramadan and strive to strengthen our faith, compassion, and community ties.</p>
-          <p style="color: #555555;">In the spirit of generosity and kindness that defines Ramadan, let us also remember those less fortunate and extend a helping hand wherever we can.</p>
-          <p style="color: #555555;">Wishing you and your family a blessed Ramadan filled with joy, harmony, and countless blessings.</p>
-          <p style="color: #555555;">Ramadan Mubarak!</p>
-          <p style="color: #555555;">Warm regards,</p>
-          <p style="color: #555555;">Anas Ibn Belal</p>
-      </div>`,
+          from: user,
+          to: Email ,
+          subject: "Ramadan Mubarak and Eid Mubarak!",
+          html: ` <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Ramadan Greetings and Eid Wishes</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 0;
+              }
+              .container {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              }
+              h1 {
+                color: #333333;
+                text-align: center;
+              }
+              p {
+                color: #555555;
+                text-align: justify;
+              }
+              .signature {
+                margin-top: 20px;
+                text-align: center;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>Warm Ramadan Greetings and Joyous Eid Wishes!</h1>
+              <p>Dear ${Fname},</p>
+              <p>As the holy month of Ramadan approaches, we extend our heartfelt wishes to you and your loved ones. Ramadan is a time of reflection, devotion, and spiritual growth, and we hope it brings you peace, joy, and blessings in abundance.</p>
+              <p>During this sacred month, Muslims around the world fast from dawn to sunset, engaging in prayer, self-reflection, and acts of charity. It is a time of heightened spirituality and an opportunity for personal growth and renewal.</p>
+              <p>In the spirit of Ramadan, let us remember to be compassionate towards others, show kindness to those in need, and strive for unity and understanding within our communities.</p>
+              <p>As Ramadan draws to a close, we eagerly anticipate the joyous celebration of Eid al-Fitr, a time of feasting, festivity, and gratitude. May this special occasion bring you closer to your family and friends, and may your homes be filled with laughter, love, and blessings.</p>
+              <p>I extend my warmest wishes to you and your family for a blessed Ramadan and a joyous Eid. May this holy month bring you closer to your faith and may you emerge from it renewed in spirit and filled with hope for the future.</p>
+              <p><strong>Ramadan Mubarak and Eid Mubarak!</strong></p>
+              <div class="signature">
+                <p>Warm regards,</p>
+                <p>Anas Ibn Belal</p>
+              </div>
+            </div>
+          </body>
+          </html>
+          `,
         });
 
         console.log("Message sent: %s", info.messageId);
