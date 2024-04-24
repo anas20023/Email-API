@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon" />
     <title>Send Email</title>
     <link
       rel="stylesheet"
@@ -13,7 +13,7 @@
       referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./output.css" />
   </head>
-  <body>
+  <body class="font-[poppins]">
     <!--Navigation bar Section -->
     <nav
       class="w-4/5 max-w-screen-xl mx-auto py-5 flex flex-row justify-between items-center">
@@ -34,9 +34,12 @@
       action="/getmail"
       method="post"
       class="w-4/5 max-w-xl mx-auto py-5 flex flex-col justify-between items-center">
+      <h1 class="text-2xl font-medium text-center text-slate-900 mt-8 mb-12">
+        Drop Your Messege About Me 📩
+      </h1>
       <div class="py-2 w-[350px]">
         <label for="name" class="block mb-3 font-bold text-slate-800 w-full"
-          >Full Name</label
+          >First Name</label
         >
         <input
           type="text"
