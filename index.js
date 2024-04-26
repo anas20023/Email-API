@@ -43,7 +43,7 @@ app.post("/getmail", async (req, res) => {
     let messege = req.body.Messege;
     const data = {
       First_Name: Fname,
-      Last_Name: lname,
+      Last_Name: lname, 
       Email: Email,
       messege: messege,
     };
