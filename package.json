@@ -18,7 +18,9 @@
     "mailersend": "^2.2.0",
     "mongoose": "^8.2.1",
     "nodemailer": "^6.9.12",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "typed.js": "^2.1.0",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"

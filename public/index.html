@@ -15,17 +15,23 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="ty.css" />
   </head>
   <body class="font-[poppins]">
     <!--Navigation bar Section -->
     <nav
       class="w-4/5 max-w-screen-xl mx-auto py-5 flex flex-row justify-between items-center">
-      <div class="flex flex-row justify-between items-center w-4/5">
-        <a href="#" rel="noopener" class="text-slate-800 font-bold text-4xl"
-          >👁️‍🗨️</a
-        >
+      <div
+        class="flex flex-row justify-start items-center w-4/5 font-bold text-lg cursor-pointer">
+        <p class="text-gray-900" id="ct">Hello World !!</p>
+        <span class="text-xl" id="cursor">|</span>
       </div>
-      <div class="flex flex-row justify-evenly items-center w-1/5 gap-2">
+      <div class="flex flex-row justify-center items-center w-1/5 gap-2">
+        <span
+          onclick="window.location.href='https://github.com/anas20023'"
+          class="text-gray-800 hidden lg:block cursor-pointer font-medium"
+          >Follow me on</span
+        >
         <i
           onclick="window.location.href='https://github.com/anas20023'"
           class="fa-brands fa-github text-2xl cursor-pointer text-slate-800"></i>
@@ -94,7 +100,6 @@
         Drop Messege
       </button>
     </form>
-
     <!--Form Section For Email Section -->
     <script src="./app.js"></script>
   </body>
